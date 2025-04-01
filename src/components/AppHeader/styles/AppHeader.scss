@@ -1,0 +1,28 @@
+.header{
+    position: sticky;
+
+
+    nav{
+
+        ul{
+            display: flex;
+            justify-content: space-between;
+
+            
+            li{
+                a{
+
+
+                    padding: 1.5em;
+                    &:hover{
+                        background-color: $light-gray;
+                        
+                    }
+                }
+            }
+
+        }
+
+    }
+
+}
