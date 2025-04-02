@@ -1,7 +1,7 @@
 import {Prefs} from '../../types/system/Prefs'
 
 
-const KEY = 'pref'
+const KEY = 'prefs'
 
 export const systemService = {
     getPrefs,
@@ -35,6 +35,6 @@ function getPrefs(): Prefs {
 
 function setPrefs(prefs:Prefs) {
     const entityType = 'prefs'
-
+    
     localStorage.setItem(entityType, JSON.stringify(prefs))
 }

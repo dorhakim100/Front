@@ -1,35 +1,36 @@
-.header{
-    position: sticky;
-    top: 0px;
-    background-color: white;
+.header {
+  position: sticky;
+  top: 0px;
 
+  position: fixed;
+  top: 3em;
+  background-color: white;
 
-    
-    nav{
-        
-        
-        ul{
-            margin: 0px;
-            display: flex;
-            justify-content: space-between;
-            
-            
-            
-            li{
-                padding: 1em;
-                cursor: pointer;
+  &.dark-mode {
+    background-color: $very-dark-gray;
+    color: $neutral-gray;
 
-                a{
-                    
-                }
-                &:hover{
-                    background-color: $light-gray;
-                    
-                }
-            }
-
-        }
-
+    li:hover {
+      background-color: black;
     }
+  }
 
+  nav {
+    ul {
+      margin: 0px;
+      //   display: flex;
+      //   justify-content: space-between;
+
+      li {
+        padding: 1em;
+        cursor: pointer;
+
+        a {
+        }
+        &:hover {
+          background-color: $light-gray;
+        }
+      }
+    }
+  }
 }
