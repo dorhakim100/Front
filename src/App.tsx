@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router'
 import {routes} from './assets/routes/routes'
 
 import { AppHeader } from './components/AppHeader/AppHeader'
+import { AppFooter } from './components/AppFooter/AppFooter.tsx'
 
 
 
@@ -20,6 +21,7 @@ function App() {
           <Route key={index} path={route.path} element={<route.element />} />
         ))}
       </Routes>
+      <AppFooter />
     </>
   )
 }

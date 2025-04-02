@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import { Route } from '../../assets/routes/routes'
 
@@ -9,14 +9,21 @@ interface AppHeaderProps {
 }
 
 export function AppHeader({ routes }: AppHeaderProps) {
-  console.log(routes);
+
+  const navigate = useNavigate()
+
+  const navigateToPage = (route:string)=>{
+    navigate(route)
+
+  }
+  
   
   return (
     <header className='header'>
       <nav>
         <ul>
           {routes.map((route, index) => (
-            <li key={index}>
+            <li key={index} onClick={()=>navigateToPage(route.path)}>
               <Link to={route.path}>{route.title}</Link>
             </li>
           ))}

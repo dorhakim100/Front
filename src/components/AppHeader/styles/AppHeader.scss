@@ -1,23 +1,30 @@
 .header{
     position: sticky;
+    top: 0px;
+    background-color: white;
 
 
+    
     nav{
-
+        
+        
         ul{
+            margin: 0px;
             display: flex;
             justify-content: space-between;
-
+            
+            
             
             li{
+                padding: 1em;
+                cursor: pointer;
+
                 a{
-
-
-                    padding: 1.5em;
-                    &:hover{
-                        background-color: $light-gray;
-                        
-                    }
+                    
+                }
+                &:hover{
+                    background-color: $light-gray;
+                    
                 }
             }
 

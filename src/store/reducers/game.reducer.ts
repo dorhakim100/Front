@@ -10,7 +10,7 @@ export const SET_GAME = 'SET_GAME'
 // export const UPDATE_GAME = 'UPDATE_GAME'
 export const SET_GAME_FILTER = 'SET_GAME_FILTER'
 
-interface GameState {
+export interface GameState {
     games:Game[],
     game: Game,
     filter: GameFilter
