@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
-import { setPrefs, setIsPrefs } from '../../store/actions/system.actions'
+import {
+  setPrefs,
+  setIsPrefs,
+  onClosePrefsHeader,
+} from '../../store/actions/system.actions'
 
 import { DarkModeSwitch } from '../DarkModeSwitch/DarkModeSwitch'
 import { LanguageSwitch } from '../LanguageSwitch/LanguageSwitch'
@@ -11,14 +15,18 @@ import LanguageIcon from '@mui/icons-material/Language'
 import DarkModeIcon from '@mui/icons-material/DarkMode'
 import LightModeIcon from '@mui/icons-material/LightMode'
 
-import { RootState } from '../../store/store'
+import { RootState, store } from '../../store/store'
 
 export function Prefs() {
   const prefs = useSelector(
     (storeState: RootState) => storeState.systemModule.prefs
   )
-  const isVisible = useSelector(
+  const isPrefs = useSelector(
     (storeState: RootState) => storeState.systemModule.isPrefs
+  )
+
+  const isHeader = useSelector(
+    (storeState: RootState) => storeState.systemModule.isHeader
   )
 
   const [darkMode, setDarkMode] = useState(prefs.isDarkMode)
@@ -49,9 +57,11 @@ export function Prefs() {
   const closePrefsModal = () => setIsPrefs(false)
   return (
     <>
-      {isVisible && <div className='overlay' onClick={closePrefsModal}></div>}
+      {(isHeader || isPrefs) && (
+        <div className='overlay' onClick={onClosePrefsHeader}></div>
+      )}
       <div
-        className={`prefs-panel ${isVisible ? 'visible' : ''}`}
+        className={`prefs-panel ${isPrefs ? 'visible' : ''}`}
         // onMouseLeave={closePrefsModal}
       >
         <div className='close-container' onClick={closePrefsModal}>

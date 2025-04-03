@@ -14,7 +14,7 @@ import SearchIcon from '@mui/icons-material/Search'
 import SettingsIcon from '@mui/icons-material/Settings'
 
 import { PrefsButton } from '../PrefsButton/PrefsButton'
-import { setIsPrefs } from '../../store/actions/system.actions'
+import { setIsHeader, setIsPrefs } from '../../store/actions/system.actions'
 
 export function SearchBar() {
   const prefs = useSelector(
@@ -23,6 +23,14 @@ export function SearchBar() {
   const isPrefs = useSelector(
     (stateSelector: RootState) => stateSelector.systemModule.isPrefs
   )
+
+  const isHeader = useSelector(
+    (stateSelector: RootState) => stateSelector.systemModule.isHeader
+  )
+
+  const onToggleMenu = () => {
+    setIsHeader(!isHeader)
+  }
 
   return (
     <div className='search-bar-container'>
@@ -33,29 +41,62 @@ export function SearchBar() {
           display: 'flex',
           alignItems: 'center',
           //   width: '100%',
-          //   position: 'fixed',
+          position: 'fixed',
+          top: '0',
+          left: '0',
+          right: '0',
           backgroundColor: prefs.isDarkMode ? '#333' : '#fff',
         }}
       >
         <IconButton
-          sx={{ p: '10px', color: prefs.isDarkMode ? '#fff' : '#000' }}
+          sx={{
+            p: '10px',
+            color: prefs.isDarkMode ? '#fff' : '#000',
+            '&:focus': {
+              outline: 'none',
+            },
+          }}
           aria-label='menu'
+          onClick={onToggleMenu}
         >
           <MenuIcon />
         </IconButton>
         <InputBase
-          sx={{ ml: 1, flex: 1, color: prefs.isDarkMode ? '#fff' : '#000' }}
+          sx={{
+            ml: 1,
+            flex: 1,
+            p: '10px',
+            color: prefs.isDarkMode ? '#fff' : '#000',
+            '&:focus': {
+              outline: 'none',
+            },
+          }}
           placeholder='Search Google Maps'
           inputProps={{ 'aria-label': 'search google maps' }}
         />
-        <IconButton type='button' sx={{ p: '10px' }} aria-label='search'>
+        <IconButton
+          type='button'
+          sx={{
+            p: '10px',
+            color: prefs.isDarkMode ? '#fff' : '#000',
+            '&:focus': {
+              outline: 'none',
+            },
+          }}
+          aria-label='search'
+        >
           <SearchIcon />
         </IconButton>
         <Divider sx={{ height: 28, m: 0.5 }} orientation='vertical' />
         <IconButton
           color='primary'
           className='prefs-button'
-          sx={{ p: '10px' }}
+          sx={{
+            p: '10px',
+            '&:focus': {
+              outline: 'none',
+            },
+          }}
           aria-label='directions'
           onClick={() => {
             setIsPrefs(!isPrefs)

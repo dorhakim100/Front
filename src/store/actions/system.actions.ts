@@ -6,6 +6,7 @@ import {
   LOADING_START,
   LOADING_DONE,
   SET_PREFS,
+  SET_IS_HEADER,
   SET_IS_ACCESSIBILITY,
   SET_IS_PREFS,
   SET_IS_MODAL,
@@ -29,6 +30,9 @@ export function setIsPrefs(stateToSet: boolean) {
   store.dispatch({ type: SET_IS_PREFS, isPrefs: stateToSet })
 }
 
+export function setIsHeader(stateToSet: boolean) {
+  store.dispatch({ type: SET_IS_HEADER, isHeader: stateToSet })
+}
 export function setIsAccessibility(stateToSet: boolean) {
   store.dispatch({ type: SET_IS_ACCESSIBILITY, isAccessibility: stateToSet })
 }
@@ -38,4 +42,9 @@ export function setIsModal(stateToSet: boolean) {
 }
 export function setModalMessage(messageToSet: string) {
   store.dispatch({ type: SET_MODAL_MESSAGE, modalMessage: messageToSet })
+}
+
+export function onClosePrefsHeader() {
+  setIsPrefs(false)
+  setIsHeader(false)
 }
