@@ -10,6 +10,7 @@ import Divider from '@mui/material/Divider'
 import IconButton from '@mui/material/IconButton'
 import MenuIcon from '@mui/icons-material/Menu'
 import SearchIcon from '@mui/icons-material/Search'
+import MenuOpenIcon from '@mui/icons-material/MenuOpen'
 
 import SettingsIcon from '@mui/icons-material/Settings'
 
@@ -39,8 +40,9 @@ export function SearchBar() {
         sx={{
           p: '2px 4px',
           display: 'flex',
+          justifyContent: 'space-between',
           alignItems: 'center',
-          //   width: '100%',
+
           position: 'fixed',
           top: '0',
           left: '0',
@@ -48,62 +50,72 @@ export function SearchBar() {
           backgroundColor: prefs.isDarkMode ? '#333' : '#fff',
         }}
       >
-        <IconButton
-          sx={{
-            p: '10px',
-            color: prefs.isDarkMode ? '#fff' : '#000',
-            '&:focus': {
-              outline: 'none',
-            },
-          }}
-          aria-label='menu'
-          onClick={onToggleMenu}
+        <div className='menu-container'>
+          <IconButton
+            sx={{
+              p: '10px',
+
+              color: prefs.isDarkMode ? '#fff' : '#000',
+              '&:focus': {
+                outline: 'none',
+              },
+            }}
+            aria-label='menu'
+            onClick={onToggleMenu}
+          >
+            {isHeader ? <MenuOpenIcon /> : <MenuIcon />}
+          </IconButton>
+        </div>
+        <div
+          className={`search-container ${prefs.isDarkMode ? 'dark-mode' : ''}`}
         >
-          <MenuIcon />
-        </IconButton>
-        <InputBase
-          sx={{
-            ml: 1,
-            flex: 1,
-            p: '10px',
-            color: prefs.isDarkMode ? '#fff' : '#000',
-            '&:focus': {
-              outline: 'none',
-            },
-          }}
-          placeholder='Search Google Maps'
-          inputProps={{ 'aria-label': 'search google maps' }}
-        />
-        <IconButton
-          type='button'
-          sx={{
-            p: '10px',
-            color: prefs.isDarkMode ? '#fff' : '#000',
-            '&:focus': {
-              outline: 'none',
-            },
-          }}
-          aria-label='search'
-        >
-          <SearchIcon />
-        </IconButton>
-        <Divider sx={{ height: 28, m: 0.5 }} orientation='vertical' />
-        <IconButton
-          color='primary'
-          className='prefs-button'
-          sx={{
-            p: '10px',
-            '&:focus': {
-              outline: 'none',
-            },
-          }}
-          aria-label='directions'
-          onClick={() => {
-            setIsPrefs(!isPrefs)
-          }}
-        >
-          <SettingsIcon className='settings-btn' />
-        </IconButton>
+          <InputBase
+            sx={{
+              ml: 1,
+              flex: 1,
+              p: '10px',
+              color: prefs.isDarkMode ? '#fff' : '#000',
+
+              '&:focus': {
+                // outline: 'none',
+              },
+            }}
+            placeholder='Search Google Maps'
+            inputProps={{ 'aria-label': 'search google maps' }}
+          />
+          <IconButton
+            type='button'
+            sx={{
+              p: '10px',
+              color: prefs.isDarkMode ? '#fff' : '#000',
+              '&:focus': {
+                outline: 'none',
+              },
+            }}
+            aria-label='search'
+          >
+            <SearchIcon />
+          </IconButton>
+        </div>
+        <div className='settings-container'>
+          <Divider sx={{ height: 28, m: 0.5 }} orientation='vertical' />
+          <IconButton
+            color='primary'
+            className='prefs-button'
+            sx={{
+              p: '10px',
+              '&:focus': {
+                outline: 'none',
+              },
+            }}
+            aria-label='directions'
+            onClick={() => {
+              setIsPrefs(!isPrefs)
+            }}
+          >
+            <SettingsIcon className='settings-btn' />
+          </IconButton>
+        </div>
       </Paper>
     </div>
   )

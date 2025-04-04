@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { Routes, Route } from 'react-router'
 
@@ -17,6 +18,14 @@ function App() {
   const prefs = useSelector(
     (stateSelector: RootState) => stateSelector.systemModule.prefs
   )
+
+  useEffect(() => {
+    if (prefs.isDarkMode) {
+      document.body.classList.add('dark-mode')
+    } else {
+      document.body.classList.remove('dark-mode')
+    }
+  }, [prefs])
 
   return (
     <>

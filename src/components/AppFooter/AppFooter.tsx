@@ -113,7 +113,9 @@ export function AppFooter() {
         </div>
       </div>
 
-      <span>{rights} &copy; 2024</span>
+      <span>
+        {rights} &copy; {new Date().getFullYear()}
+      </span>
     </footer>
   )
 }
