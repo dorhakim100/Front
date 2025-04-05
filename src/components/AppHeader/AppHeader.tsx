@@ -11,6 +11,8 @@ import {
   setIsHeader,
   setIsPrefs,
 } from '../../store/actions/system.actions'
+import { DropdownMenu } from '../DropdownMenu/DropdownMenu'
+
 interface AppHeaderProps {
   routes: Route[]
 }
@@ -36,15 +38,15 @@ export function AppHeader({ routes }: AppHeaderProps) {
 
   return (
     <>
-      {(isHeader || isPrefs) && (
+      {/* {(isHeader || isPrefs) && (
         <div className='overlay' onClick={onClosePrefsHeader}></div>
-      )}
+      )} */}
       <header
         className={`header ${isHeader ? 'visable' : ''} ${
           prefs.isDarkMode ? 'dark-mode' : ''
         }`}
       >
-        <nav>
+        {/* <nav>
           <ul>
             {routes.map((route, index) => (
               <li key={index} onClick={() => navigateToPage(route.path)}>
@@ -52,7 +54,7 @@ export function AppHeader({ routes }: AppHeaderProps) {
               </li>
             ))}
           </ul>
-        </nav>
+        </nav> */}
       </header>
     </>
   )
