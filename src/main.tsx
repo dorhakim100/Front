@@ -4,6 +4,8 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { Provider } from 'react-redux'
 
+import { CssVarsProvider } from '@mui/material/styles'
+
 import { store } from './store/store'
 
 import './index.css'
@@ -15,7 +17,13 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Provider store={store}>
       <Router>
-        <App />
+        <CssVarsProvider>
+          <link
+            rel='stylesheet'
+            href='https://fonts.googleapis.com/icon?family=Material+Icons'
+          />
+          <App />
+        </CssVarsProvider>
       </Router>
     </Provider>
   </StrictMode>

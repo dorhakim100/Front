@@ -54,6 +54,7 @@ export function DropdownMenu({ options }: any) {
         MenuListProps={{
           'aria-labelledby': 'basic-button',
         }}
+        disableScrollLock
         PaperProps={{
           sx: {
             bgcolor: prefs.isDarkMode ? '#222' : '#fff',

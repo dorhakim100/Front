@@ -34,7 +34,7 @@ export function SearchBar() {
     (stateSelector: RootState) => stateSelector.systemModule.isHeader
   )
 
-  const [dropdownOptions, setDropdownOptions] = useState<DropdownOption[]>()
+  const [dropdownOptions, setDropdownOptions] = useState<DropdownOption[]>([])
 
   const onToggleMenu = () => {
     setIsHeader(!isHeader)

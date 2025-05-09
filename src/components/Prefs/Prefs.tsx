@@ -16,6 +16,7 @@ import DarkModeIcon from '@mui/icons-material/DarkMode'
 import LightModeIcon from '@mui/icons-material/LightMode'
 
 import { RootState, store } from '../../store/store'
+import { ShadowOverlay } from '../ShadowOverlay/ShadowOverlay'
 
 export function Prefs() {
   const prefs = useSelector(
@@ -57,9 +58,10 @@ export function Prefs() {
   const closePrefsModal = () => setIsPrefs(false)
   return (
     <>
-      {(isHeader || isPrefs) && (
-        <div className='overlay' onClick={onClosePrefsHeader}></div>
-      )}
+      <ShadowOverlay
+        isVisble={isHeader || isPrefs}
+        handleClose={onClosePrefsHeader}
+      />
       <div
         className={`prefs-panel ${isPrefs ? 'visible' : ''}`}
         // onMouseLeave={closePrefsModal}
