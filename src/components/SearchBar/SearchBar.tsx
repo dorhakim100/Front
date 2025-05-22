@@ -86,7 +86,7 @@ export function SearchBar() {
                 // outline: 'none',
               },
             }}
-            placeholder='Search Google Maps'
+            placeholder='Search meeting'
             inputProps={{ 'aria-label': 'search google maps' }}
           />
           <IconButton
